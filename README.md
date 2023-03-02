@@ -1,2 +1,2 @@
-# SanPatrickBank
-Yet another San Patrick Bank proyect
+# CrediCapital
+Yet another finchech project
