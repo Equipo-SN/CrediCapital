@@ -102,6 +102,6 @@
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"],
-  "typings": "path/to/express.d.ts"
+ 
 
 }

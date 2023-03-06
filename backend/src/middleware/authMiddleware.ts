@@ -6,14 +6,13 @@ const checkAuth = async (req:Request, res:Response, next:NextFunction) =>{
     if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')){
        try {
         token = req.headers.authorization.split(" ")[1];
-        const decoded: any = jwt.verify(token,process.env.TOKEN_SECRET ||'uanpalabrasecreta ')
+        const decoded: any = jwt.verify(token,process.env.TOKEN_SECRET || 'unapalabrasecreta')
         const user = await User.find({select:['id','firstName','lastName','phone','email'] ,where:{id:decoded.id}})
-        req.usersesion = user;
-        
+      
         
           } catch (err) {
             console.error(err);
-          }          
+          }         
     }else{
             console.log('token invalido');
             
