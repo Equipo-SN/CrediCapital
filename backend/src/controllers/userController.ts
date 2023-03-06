@@ -1,8 +1,7 @@
-import { Request, Response} from "express"
-import bcrypt from 'bcrypt';
-
-
+import { Request, Response} from "express";
 import { User } from "../entities/Userentities";
+import generateToken from "../helpers/generateJWT";
+
 
 
 
@@ -17,11 +16,12 @@ const createUser = async (req:Request,res:Response) =>{
   }
     try {
         const user = new User();
+        const hashedPassword = await user.hashPassword(password);
             user.firstName = firsName;
             user.lastName = lastName;
             user.phone = phone;
             user.email = email;
-            user.password = password;
+            user.password = hashedPassword ;
             user.token = Date.now().toString(32) + Math.random().toString(32).substring(2)
             
         await user.save()
@@ -51,23 +51,37 @@ const confirmAccount = async (req: Request,res: Response) =>{
 }
 const login =  async (req:Request,res:Response) =>{
     const {email,password} = req.body;
-    
     const validUser = await User.findOne({where:{email}})
+    // Aca comprobamos si el usuario esta registrado o no
+    if (!validUser) {
+      const error = new Error("El usuario no existe");
+      return res.status(403).json({ msg: error.message });
+    }
     // comprobar si el usuario confirmo la cuenta
     if(!validUser?.active){
         const error = new Error('Revisa su correo para validar la cuenta')
         return res.status(403).json({ msg: error.message });
     }
     // revisar si la contraseña es correcta
-    const passwordsMatch = await bcrypt.compare(password, validUser.password);
-    console.log(passwordsMatch);
-    
-    
-    
+    const passwordsMatch = await validUser.comparePassword(password);
+    try {
+     if ( passwordsMatch) {
+      //generamos el JWT  
+      res.json({token:generateToken(validUser.id)})
+      
+     }
+    } catch (error) {
+      console.log(error);
+    }   
+}
+const admin = (req:Request,res:Response)=>{
+  console.log('desde admin');
+  
 }
 
 export {
     createUser,
     confirmAccount,
-    login
+    login,
+    admin
 }
