@@ -1,8 +1,9 @@
 import jwt from 'jsonwebtoken';
 
- function generateToken(id: string): string {
-    const payload = { id };
-    const options = { expiresIn: '1h' };
-    return jwt.sign(payload, process.env.TOKEN_SECRET || 'unapalabrasecreta', options);
-  }
+
+// Función helper para generar un token JWT
+export const generateToken = (id: any) => {
+  return jwt.sign({id}, process.env.JWT_SECRET as string, { expiresIn: '1h' });
+};
+
   export default generateToken;
