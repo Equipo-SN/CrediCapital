@@ -1,10 +1,8 @@
+import {router} from "./Api/routes";
 import { json, urlencoded } from "body-parser";
 import express, { Request, Response } from "express";
-import Router from "express-promise-router";
 import * as http from "http";
 import httpStatus from "http-status";
-
-import routes from "./api/routes";
 
 export class Server {
     private readonly express: express.Express;
@@ -17,12 +15,10 @@ export class Server {
         this.express.use(json());
         this.express.use(urlencoded({ extended: true }));
 
-        const router = Router();
-        this.express.use(router);
 
-        this.express.use(routes);
+        this.express.use("/api", router);
 
-        router.use((err: Error, req: Request, res: Response, _next: () => void) => {
+        this.express.use((err: Error, req: Request, res: Response, _next: () => void) => {
             console.log(err);
             res.status(httpStatus.INTERNAL_SERVER_ERROR).send(err.message);
         });

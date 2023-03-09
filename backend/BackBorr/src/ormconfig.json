@@ -3,12 +3,12 @@
   "database": "credicapital.sqlite",
   "syncronized": true,
   "logging": false,
-  "entities": ["src/infraestructure/dataaccess/sqlite/daos/**/*.ts"],
-  "migrations": ["src/infraestructure/dataaccess/sqlite/migrations/**/*.ts"],
-  "subscribers": ["src/infraestructure/dataaccess/sqlite/subscribes/**/*.ts"],
+  "entities": ["src/infraestructure/dataaccess/entities/**/*.ts"],
+  "migrations": ["src/infraestructure/dataaccess/migrations/**/*.ts"],
+  "subscribers": ["src/infraestructure/dataaccess/subscribes/**/*.ts"],
   "cli": {
-    "entitiesDir": "src/infraestructure/dataaccess/sqlite/daos",
-    "migrationsDir": "src/infraestructure/dataaccess/sqlite/migrations",
-    "subscribersDir": "src/infraestructure/dataaccess/sqlite/subscribers"
+    "entitiesDir": "src/infraestructure/dataaccess/entities",
+    "migrationsDir": "src/infraestructure/dataaccess/migrations",
+    "subscribersDir": "src/infraestructure/dataaccess/subscribers"
   }
 }

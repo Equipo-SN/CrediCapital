@@ -1,5 +1,5 @@
+import { BorrowerEntity } from '../../../../Persistence/entities/BorrowerEntity';
 import { DataSource } from 'typeorm';
-import { BorrowerMetadata } from '../../../typeorm/daos/borrower';
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
@@ -10,7 +10,7 @@ export const AppDataSource = new DataSource({
   database: 'credicapital_borrower',
   synchronize: true,
   logging: true,
-  entities: [BorrowerMetadata],
+  entities: [BorrowerEntity],
   subscribers: [],
   migrations: [],
 });

@@ -1,7 +1,8 @@
-import { AppDataSource } from '../drivers/postgresql/DataSource';
-import { Borrower } from '../../../domain/entities/Borrower';
-import { IBorrowerRepository } from '../../../domain/repositories/IBorrowerRepository';
-import { NotFoundException } from '../../../application/Exceptions/NotFoundException';
+import { NotFoundException } from "../../Application/Exceptions/NotFoundException";
+import { Borrower } from "../../Domain/entities/Borrower";
+import { IBorrowerRepository } from "../../Domain/repositories/IBorrowerRepository";
+import { AppDataSource } from "../../Persistence/configs/postgresql/DataSource";
+
 
 export class BorrowerRepository implements IBorrowerRepository {
   private db = AppDataSource.getRepository(Borrower);

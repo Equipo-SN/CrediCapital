@@ -1,8 +1,6 @@
 import {v4 as uuidv4} from 'uuid';
 import { Request, Response, NextFunction } from "express";
-import { CreateBorrower } from "../../../application/feautures/borrowers/CreateBorrower/CreateBorrower";
-import { BorrowerRepository } from "../../../data/postgress/repositories/BorrowerRepository";
-import { Borrower } from "../../../domain/entities/Borrower";
+import { Borrower } from "../../../Domain/entities/Borrower";
 
 
 export const GetAllBorrowerController = async (req:Request, res: Response, next: NextFunction) : Promise<void> => {

@@ -1,8 +1,8 @@
 import {v4 as uuidv4} from 'uuid';
 import { Request, Response, NextFunction } from "express";
-import { CreateBorrower } from "../../../application/feautures/borrowers/CreateBorrower/CreateBorrower";
-import { BorrowerRepository } from "../../../data/postgress/repositories/BorrowerRepository";
-import { Borrower } from "../../../domain/entities/Borrower";
+import { CreateBorrower } from "../../../Application/feautures/borrowers/CreateBorrower/CreateBorrower";
+import { BorrowerRepository } from "../../../Persistence/repositories/BorrowerRepository";
+import { Borrower } from "../../../Domain/entities/Borrower";
 
 
 export const CreateBorrowerController = async (req:Request, res: Response, next: NextFunction) : Promise<void> => {

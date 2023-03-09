@@ -1,5 +1,5 @@
-import { Borrower } from "../../../../domain/entities/Borrower";
-import { IBorrowerRepository } from "../../../../domain/repositories/IBorrowerRepository";
+import { Borrower } from "../../../../Domain/entities/Borrower";
+import { IBorrowerRepository } from "../../../../Domain/repositories/IBorrowerRepository";
 import { BorrowerAlreadyExistsException } from "../../../Exceptions/BorrowerAlreadyExistsException";
 
 export class CreateBorrower {
