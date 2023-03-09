@@ -1,0 +1,14 @@
+{
+  "type": "sqlite",
+  "database": "credicapital.sqlite",
+  "syncronized": true,
+  "logging": false,
+  "entities": ["src/infraestructure/dataaccess/sqlite/daos/**/*.ts"],
+  "migrations": ["src/infraestructure/dataaccess/sqlite/migrations/**/*.ts"],
+  "subscribers": ["src/infraestructure/dataaccess/sqlite/subscribes/**/*.ts"],
+  "cli": {
+    "entitiesDir": "src/infraestructure/dataaccess/sqlite/daos",
+    "migrationsDir": "src/infraestructure/dataaccess/sqlite/migrations",
+    "subscribersDir": "src/infraestructure/dataaccess/sqlite/subscribers"
+  }
+}
