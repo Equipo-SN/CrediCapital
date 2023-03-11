@@ -3,3 +3,4 @@ dist/
 .tmp
 logs/
 test-results.xml
+.env
