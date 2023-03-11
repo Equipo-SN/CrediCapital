@@ -4,9 +4,9 @@
   "description": "Context that encompasses the backend application of will serve to provide service to borrowers",
   "main": "start.ts",
   "scripts": {
-    "build": "npx tsc",
+    "build": "tsc",
     "start": "node dist/start.js",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q start.js\""
+    "dev": "nodemon --watch 'src/**/*.ts' --exec \"ts-node\" src/start.ts"
   },
   "author": "Jose Luis Sandoval Aburto",
   "license": "ISC",
@@ -32,9 +32,11 @@
     "@types/express": "^4.17.17",
     "@types/glob": "^8.1.0",
     "@types/helmet": "^4.0.0",
-    "@types/node": "^18.14.6",
+    "@types/node": "^18.15.0",
     "@types/pg": "^8.6.6",
     "@types/uuid": "^9.0.1",
+    "nodemon": "^2.0.21",
+    "ts-node": "^10.9.1",
     "typescript": "^4.9.5"
   }
 }
