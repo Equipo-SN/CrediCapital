@@ -8,7 +8,6 @@ dotenv.config({
 
 try {
 	new BackendApp().start();
-	console.log(process.env.HELLO);
 } catch (error) {
 	console.log(error);
 }

@@ -1,9 +1,8 @@
 services:
-
-  Api.controllers.status.StatusGetController:
-    class: ../../controllers/status/StatusGetController
+  controller.StatusGet:
+    class: ../../controllers/status/CheckStatusController
     arguments: []
 
-  Api.controllers.borrower.BorrowerPostController:
-    class: ../../controllers/borrower/BorrowerPostController
+  controller.BorrowerPost:
+    class: ../../controllers/borrower/CreateBorrowerController
     arguments: [""]

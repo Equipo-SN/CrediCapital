@@ -1,11 +1,10 @@
+import { Controller } from 'Api/controllers/Controller';
 import { Request, Response, Router } from 'express';
 
-import StatusController from '../controllers/status/StatusGetController';
-//import container from '../dependency-injection';
+import container from '../dependency-injection';
 
 export const register = (router: Router): void => {
-	//const controller = container.get<StatusController>('Api.controllers.status.StatusGetController');
-	const controller = new StatusController();
+	const controller: Controller = container.get('controller.CheckStatus');
 	router.get('/status', (req: Request, res: Response) => {
 		controller.run(req, res);
 	});
