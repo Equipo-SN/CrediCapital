@@ -6,12 +6,12 @@ import generateToken from "../helpers/generateJWT";
 
 
 const createUser = async (req:Request,res:Response) =>{
-    const {firsName, lastName, phone, email, password} = req.body;
+    const {firsName, lastName, phone,RFC, email, password} = req.body;
 
-    const existeUsuario = await User.findOne({where:{email}});
+    const userMatch = await User.findOne({where:{email}});
 
-  if (existeUsuario) {
-    const error = new Error("Ya existe una cuenta asociada con ese email");
+  if (userMatch) {
+    const error = new Error("An account is already associated with that email");
     return res.status(400).json({ msg: error.message });
   }
     try {
@@ -20,12 +20,13 @@ const createUser = async (req:Request,res:Response) =>{
             user.firstName = firsName;
             user.lastName = lastName;
             user.phone = phone;
+            user.RFC = RFC;
             user.email = email;
             user.password = hashedPassword ;
             user.token = Date.now().toString(32) + Math.random().toString(32).substring(2)
             
         await user.save()
-        res.send({msg:'La cuenta fue creada revise su email para activar'});
+        res.send({msg:'Account was created, please check your email to activate'});
         
     } catch (error) {
         res.send(error);
@@ -37,14 +38,14 @@ const confirmAccount = async (req: Request,res: Response) =>{
     const confirmado = await User.findOne({where:{token}});
 
   if (!confirmado) {
-    const error = new Error("token no encontrado");
+    const error = new Error("token not fount");
     return res.status(400).json({ msg: error.message });
   }
   try {
     confirmado.token = '';
     confirmado.active = true;
     await confirmado.save();
-    res.json({ msg: "Cuenta confirmada" });
+    res.json({ msg: "Account confirmed" });
   } catch (err) {
     console.log(err);
   }
@@ -54,12 +55,12 @@ const login =  async (req:Request,res:Response) =>{
     const validUser = await User.findOne({where:{email}})
     // Aca comprobamos si el usuario esta registrado o no
     if (!validUser) {
-      const error = new Error("El usuario no existe");
+      const error = new Error("User does not exist");
       return res.status(403).json({ msg: error.message });
     }
     // comprobar si el usuario confirmo la cuenta
     if(!validUser?.active){
-        const error = new Error('Revisa su correo para validar la cuenta')
+      const error = new Error('Please check your email to validate the account');
         return res.status(403).json({ msg: error.message });
     }
     // revisar si la contraseña es correcta

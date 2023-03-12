@@ -10,9 +10,9 @@ import { createUser,
 
 const route = Router();
 
-route.post('/',createUser);
-route.get('/confirmar/:token',confirmAccount);
-route.post('/login',login);
+route.post('/api/investor/register',createUser);
+route.get('/api/investor/confirm/:token',confirmAccount);
+route.post('/api/investor/signin',login);
 // Rutas protegidas 
 route.get('/user/admin',checkAuth,admin)
 

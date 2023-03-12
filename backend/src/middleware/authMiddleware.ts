@@ -14,12 +14,12 @@ const checkAuth = async (req: Request, res: Response, next: NextFunction) => {
   // Verificar si se proporcionó un token JWT en el encabezado Authorization
   const authHeader = req.headers.authorization;
   if (!authHeader) {
-    return res.status(401).send({ message: 'No se proporcionó un token de autenticación' });
+    return res.status(401).send({ message: 'No authentication token provided' });
   }
   
   const token = authHeader.split(' ')[1];
   if (!token) {
-    return res.status(401).send({ message: 'No se proporcionó un token de autenticación' });
+    return res.status(401).send({ message: 'No authentication token provided' });
   }
   
   // Verificar el token JWT y extraer el ID del usuario
