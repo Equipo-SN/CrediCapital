@@ -1,10 +1,10 @@
-import { GetAllBorrowerController } from "../controllers/borrower/GetAllBorrowerController";
-import { Router, Request, Response, NextFunction } from "express";
-import { CreateBorrowerController } from "../controllers/borrower/CreateBorrowerController";
+import { Router, Request, Response } from "express";
+import { Controller } from "../../Api/controllers/Controller";
+import container from "../../Api/dependency-injection";
 
-const router = Router();
-
-router.post("", CreateBorrowerController);
-router.get("/", GetAllBorrowerController)
-
-export default router;
+export const register = (router: Router): void => {
+    const controller: Controller = container.get("controller.CreateBorrower");
+    router.put("/borrower/:id", (req: Request, res: Response) => {
+        controller.run(req, res);
+    });
+};

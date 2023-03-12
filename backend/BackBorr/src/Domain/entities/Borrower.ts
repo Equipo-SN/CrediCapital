@@ -4,17 +4,17 @@ export class Borrower {
     name: string;
     lastname: string;
     rfc: string;
-    phone: number;
+    phone: string;
     email: string;
-    passwordHash: string;
+    passwordHash?: string;
 
-    constructor(rfc: string){
-        this.id = '',
-        this.name = '',
-        this.lastname = '',
+    constructor(id: string, name: string,lastname: string, rfc: string,phone: string,email: string,passwordHash: string){
+        this.id = id,
+        this.name = name,
+        this.lastname = lastname,
         this.rfc = rfc,
-        this.phone = 1,
-        this.email = '',
-        this.passwordHash = ''
+        this.phone = phone,
+        this.email = email,
+        this.passwordHash = passwordHash
     }
 }

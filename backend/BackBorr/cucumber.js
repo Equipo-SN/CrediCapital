@@ -10,5 +10,6 @@ const borrower_backend = [
 ].join(' ');
 
 module.exports = {
+	default: '--publish-quiet',
 	borrower_backend
 };

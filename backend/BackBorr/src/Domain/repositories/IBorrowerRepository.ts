@@ -1,10 +1,10 @@
 import { Borrower } from "../entities/Borrower";
 
 export interface IBorrowerRepository {
-    create: (borrower: Borrower) => Promise<Borrower>;
-    update: (borrower: Borrower) => Promise<Borrower>;
+    create: (borrower: Borrower) => Promise<void>;
+    update: (borrower: Borrower) => Promise<void>;
     //delete: (borrower: Borrower) => Promise<void>;
     getAll: () => Promise<Borrower[]>;
-    //getById: (id: string) => Promise<Borrower | null>;
+    getById: (idBorrower: string) => Promise<Borrower | null>;
     getByRfc: (rfc: string) => Promise<Borrower | null>;
 }

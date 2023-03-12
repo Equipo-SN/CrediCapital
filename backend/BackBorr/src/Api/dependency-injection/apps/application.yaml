@@ -1,8 +1,16 @@
 services:
   controller.StatusGet:
-    class: ../../controllers/status/CheckStatusController
+    class: ../../../Api/controllers/status/CheckStatusController
     arguments: []
 
   controller.BorrowerPost:
-    class: ../../controllers/borrower/CreateBorrowerController
-    arguments: [""]
+    class: ../../../Api/controllers/borrower/CreateBorrowerController
+    arguments: ["CreateBorrower"]
+
+  CreateBorrower:
+    class: ../../../Application/features/borrowers/CreateBorrower/CreateBorrower
+    arguments: ["BorrowerRepository"]
+
+    BorrowerRepository:
+    class: ../../../Persistence/repositories/FileBorrowerRepository
+    argument: []

@@ -7,13 +7,15 @@
     "build": "tsc",
     "start": "node dist/start.js",
     "dev:app:backend": "nodemon --watch \"src/**/*.ts\" --exec \"ts-node\" src/start.ts",
-    "test": "npm run test:features",
+    "test": "npm run test:unit && npm run test:features",
+    "test:unit": "NODE_ENV=test jest",
     "test:features": "npm run test:api:features",
     "test:api:features": "NODE_ENV=test cucumber-js -p borrower_backend"
   },
   "author": "Jose Luis Sandoval Aburto",
   "license": "ISC",
   "dependencies": {
+    "bson": "^5.0.1",
     "compression": "^1.7.4",
     "dotenv": "^16.0.3",
     "errorhandler": "^1.5.1",
@@ -36,12 +38,15 @@
     "@types/express": "^4.17.17",
     "@types/glob": "^8.1.0",
     "@types/helmet": "^4.0.0",
+    "@types/jest": "^29.4.0",
     "@types/node": "^18.15.0",
     "@types/pg": "^8.6.6",
     "@types/supertest": "^2.0.12",
     "@types/uuid": "^9.0.1",
+    "jest": "^29.5.0",
     "nodemon": "^2.0.21",
     "supertest": "^6.3.3",
+    "ts-jest": "^29.0.5",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.5"
   }
