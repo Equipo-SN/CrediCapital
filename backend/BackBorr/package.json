@@ -6,7 +6,10 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/start.js",
-    "dev": "nodemon --watch \"src/**/*.ts\" --exec \"ts-node\" src/start.ts"
+    "dev:app:backend": "nodemon --watch \"src/**/*.ts\" --exec \"ts-node\" src/start.ts",
+    "test": "npm run test:features",
+    "test:features": "npm run test:api:features",
+    "test:api:features": "NODE_ENV=test cucumber-js -p borrower_backend"
   },
   "author": "Jose Luis Sandoval Aburto",
   "license": "ISC",
@@ -27,6 +30,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@cucumber/cucumber": "^9.0.0",
     "@types/compression": "^1.7.2",
     "@types/errorhandler": "^1.5.0",
     "@types/express": "^4.17.17",
@@ -34,6 +38,7 @@
     "@types/helmet": "^4.0.0",
     "@types/node": "^18.15.0",
     "@types/pg": "^8.6.6",
+    "@types/supertest": "^2.0.12",
     "@types/uuid": "^9.0.1",
     "nodemon": "^2.0.21",
     "supertest": "^6.3.3",
