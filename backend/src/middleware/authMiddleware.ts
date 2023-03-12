@@ -22,15 +22,22 @@ const checkAuth = async (req: Request, res: Response, next: NextFunction) => {
     return res.status(401).send({ message: 'No authentication token provided' });
   }
   
-  // Verificar el token JWT y extraer el ID del usuario
- const decoded: any = jwt.verify(token, process.env.JWT_SECRET as string);
- const user: any = await User.find({select:['id','firstName','lastName','phone','email'] ,where:{id:decoded.id}})
- 
+  try {
+    // Verificar el token JWT y extraer el ID del usuario
+    const decoded: any = jwt.verify(token, process.env.JWT_SECRET as string);
     
-    // Establecer el ID del usuario en la solicitud para su posterior uso
-    req.userId = user;
     
-    // Continuar con la siguiente función middleware
-    next();
+    const user: any = await User.find({select:['id','firstName','lastName','phone','email'] ,where:{id:decoded.id}})
+          
+       // Establecer el ID del usuario en la solicitud para su posterior uso
+       req.userId = user;
+       
+       // Continuar con la siguiente función middleware
+       next();
+    
+  } catch (error) {
+    console.log(error);
+    
+  }
 }
 export default checkAuth;

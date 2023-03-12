@@ -63,12 +63,12 @@ const login =  async (req:Request,res:Response) =>{
       const error = new Error('Please check your email to validate the account');
         return res.status(403).json({ msg: error.message });
     }
-    // revisar si la contraseña es correcta
-    const passwordsMatch = await validUser.comparePassword(password);
     try {
+      // revisar si la contraseña es correcta
+      const passwordsMatch = await validUser.comparePassword(password);    
      if ( passwordsMatch) {
       //generamos el JWT  
-      res.json({token:generateToken(validUser.id)})
+      res.json({token:generateToken(validUser.id)});
       
      }
     } catch (error) {

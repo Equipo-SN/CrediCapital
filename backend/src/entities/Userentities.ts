@@ -25,8 +25,8 @@ export class User extends BaseEntity {
     phone: number;
 
     @Column({unique:true})
-    RFC: number
-    
+    RFC: number;
+
     @Column({unique:true})
     email: string;
 

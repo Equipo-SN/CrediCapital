@@ -7,7 +7,7 @@ import { AppDataSource } from "./db";
     await AppDataSource.initialize()
     const PORT = process.env.PORT || 4000
 app.listen(PORT,()=>{
-   console.log(`Server workin in port ${PORT}`);
+   console.log(`Server workin on port ${PORT}`);
 });
   } catch (error) {
     console.log(error);
