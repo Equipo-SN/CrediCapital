@@ -1,9 +1,0 @@
-services:
-
-  CreateBorrower:
-    class: ../../../Application/features/borrowers/CreateBorrower/CreateBorrower
-    arguments: [BorrowerRepository]
-
-    BorrowerRepository:
-    class: ../../../Persistence/repositories/FileBorrowerRepository
-    argument: []
